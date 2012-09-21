@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  rlink: MyString
+
+two:
+  title: MyString
+  rlink: MyString
+# == Schema Information
+#
+# Table name: links
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  rlink      :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

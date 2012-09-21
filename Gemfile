@@ -6,7 +6,12 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'bootstrap-sass', '2.1.0'
+gem 'faker', '1.0.1'
 
+group :development, :test do
+  gem 'annotate', '~> 2.4.1.beta' # use it for annotating database
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,9 +24,9 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
-
+gem 'pry', '0.9.9.4'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
