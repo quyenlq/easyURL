@@ -1,7 +1,18 @@
 EasyURL::Application.routes.draw do
   resources :links
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   root to: "static_pages#home"
+  match '/home', to:'static_pages#home'
+
+  match '/signup', to:'users#new'
+  match '/signin', to:'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+
+  controller :links do
+    get '/:name' => :redirect
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

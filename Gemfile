@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
-
+gem 'bcrypt-ruby', '3.0.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'bootstrap-sass', '2.1.0'
+gem 'bootstrap-sass', '2.0.0'
 gem 'faker', '1.0.1'
+gem 'pismo'
 
 group :development, :test do
   gem 'annotate', '~> 2.4.1.beta' # use it for annotating database
@@ -24,11 +25,10 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'pry', '0.9.9.4'
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

@@ -1,5 +1,15 @@
-<h1>Links#show</h1>
-<p><%= @link.id %> </p>
-<p><%= @link.name %> </p>
-<p><%= @link.rlink %> </p>
-<p><%= @link.title %> </p>
+<% provide(:title,"URL Preview") %>
+<h1 class="big-title">URL Preview</h1>
+<div class="span8 offset2 clearfix">
+	Your shorten URL<input class="span8"type="text" value="<%='http://localhost:3000/'+@link.name%>"/>
+	Your real URL<input class="span8"type="text" value="<%=@link.rlink%>"/>
+	<div class="url-info well">
+		<div class="title">
+			<% if !@doc.favicon.nil? %>
+			<%=image_tag @doc.favicon %>
+			<%end%>
+			<%= @doc.title %>
+		</div>
+		<div class="desc"><%= strip_tags(@doc.description) %> </div>
+	</div>
+</div>

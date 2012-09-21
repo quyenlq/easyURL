@@ -1,7 +1,7 @@
 class Link < ActiveRecord::Base
   attr_accessible :rlink, :title, :name
-  #validates :rlink, presence: true, length: { maximum: 500}
-  #validates :title, length: {maximum: 255}
+  validates :rlink, presence: true, length: { maximum: 500}
+  validates :name, presence: true, length: {maximum: 81, minimum: 4}, uniqueness: {case_sensitive: true}
 
 end
 # == Schema Information

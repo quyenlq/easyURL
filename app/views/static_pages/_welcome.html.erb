@@ -1,0 +1,24 @@
+<div class="hero-unit">
+<h1>Welcome to EasyURL</h1>
+	<%= form_for(@link) do |f| %>
+	<%= render 'shared/error_messages', object: @link %>
+	<input id="link_rlink" name="link[rlink]" class="span6 quickinput" placeholder="Enter your url" type="text">
+	<br>
+
+	<%= f.submit "Shorten it!!!", class: "btn btn-primary btn-large" %>
+	<small>or <a id="custom">customize your URL?</a></small>
+	<div id="custom-field" style="display:none">
+		http://localhost:3000/
+	<input id="link_name" name="link[name]" class="span4 quickinput" hidden="true"></div>
+	<%end%>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+	$('#custom').click(function(){
+		$("#custom-field").show("fast");
+	})
+</script>
