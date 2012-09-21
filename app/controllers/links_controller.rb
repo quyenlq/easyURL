@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  before_filter :correct_user, only: :destroy
   def new
   	@link = Link.new
   end
@@ -6,7 +7,7 @@ class LinksController < ApplicationController
   def create
     #generate random string
     if(params[:link][:name].nil?||params[:link][:name]=="")
-      params[:link][:name]=random_string(4)
+      params[:link][:name]=get_url(4)
     end
     #get url information
     doc = Pismo::Document.new(params[:link][:rlink])
@@ -15,7 +16,11 @@ class LinksController < ApplicationController
       redirect_to root_path
     else
       params[:link][:title]=doc.title
-  	  @link = Link.new(params[:link])      
+      if(signed_in?)
+        @link = current_user.links.build(params[:link])
+      else      
+  	    @link = Link.new(params[:link])      
+      end
   	  if(@link.save)
         flash[:success] = "Created shorten url, please copy and store your URL below"
   		  redirect_to @link
@@ -31,6 +36,11 @@ class LinksController < ApplicationController
     @doc = Pismo::Document.new(@link.rlink)
   end
 
+  def destroy
+    @link.destroy
+    redirect_to root_path
+  end
+
   def redirect
     link= Link.find_by_name(params[:name])
     if link.nil?
@@ -40,7 +50,14 @@ class LinksController < ApplicationController
     end 
   end
 
+  private
 
+  def get_url(length)
+    begin
+    gen_url=random_string(length)
+    end while !Link.find_by_name(gen_url).nil? # avoid generating the same name
+    gen_url
+  end
 
   def random_string(length)
     chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789'
@@ -48,4 +65,10 @@ class LinksController < ApplicationController
     length.times { string << chars[rand(chars.size)] }
     string
   end
+
+  def correct_user
+      @link = current_user.links.find_by_id(params[:id])
+      redirect_to root_url if @link.nil?
+  end
+
 end

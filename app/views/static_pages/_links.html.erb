@@ -1,0 +1,6 @@
+<h1 class="big-title">Your links (<%= @links.count %>)</h1>
+<hr>
+<% @links.each do |link| %> 
+<%= render link %>
+<% end %>
+<%= will_paginate @links%>

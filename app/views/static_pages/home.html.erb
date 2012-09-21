@@ -1,5 +1,6 @@
 <% provide(:title, 'Home') %>
 <% if signed_in? %>
+<%= render 'userpage' %>
 <% else %>
 <%= render 'welcome' %>
 <% end %>

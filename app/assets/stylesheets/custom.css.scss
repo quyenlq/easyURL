@@ -31,8 +31,13 @@
   @extend .error;
  }
 #custom-field{
+  margin-top: 10px;
   font-weight: bold;
-  font-size: 125%;
+  color: #09C;
+  font-size: 110%;
+  input{
+    padding: 5px;
+  }
 }
 .url-info{
   .title{
@@ -59,7 +64,21 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
-
+.item-link{
+  input{
+    margin: 5px;
+  }
+  .date{
+    display: inline;
+    color: #666;
+    font-size: 75%;
+    font-style: italic;
+  }
+  .toolbar{
+    margin-bottom: 10px;
+    padding-left: 5px;
+  }
+}
 
 /* HEADER */
 body{
@@ -70,7 +89,7 @@ body{
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: #09C;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
