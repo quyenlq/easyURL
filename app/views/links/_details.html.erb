@@ -1,10 +1,11 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel"><%= @link.title %></h3>
+    <h3 id="myModalLabel">URL Details</h3>
   </div>
   <div class="modal-body">
-    <p><%= @link.description%></p>
+  	<h4 class="url-info"><%=get_favicon(@link)%><%= @link.title %></h4>
+    <p><%= strip_tags(@link.desc) %></p>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>

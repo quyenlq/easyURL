@@ -1,10 +1,17 @@
 <div class="well item-link">
-<a class="title" href="<%= link.rlink %>"><%= link.title %></a><br>
+<a class="title" href="<%= link.rlink %>"> <%=get_favicon(link)%> <%= link.title %></a><br>
 <input type="text" class="span4"value="<%= get_base_url+link.name %>"/>
+<span class="label label-success">Easy URL</span>
 <div class="date">Created <%= time_ago_in_words(link.created_at)%> ago</div>
 <div class="btn-group toolbar">
-	<%= link_to 'Details' , link, remote: true, class: "btn btn-small" %>
-	<%= link_to 'Edit' , '#', class: "btn btn-small" %>
+	<a href="#d-content<%=link.id%>" class="btn btn-small" id="details" onclick="displayDetails(<%=link.id%>)">Details</a>
+	<%= link_to 'Edit' , edit_link_path(link), remote: true, class: "btn btn-small" %>
 	<%= link_to 'Delete' , link, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-small" %>
 </div>
+<div id="d-content<%=link.id %>" class="details" style="display: none">
+	<div class="desc"> <%= strip_tags(link.desc)%> </div>	
+	<input type="text" class="span4" value="<%= link.rlink %>"/> <span class="label label-important">Real URL</span>
+	<a class="close pull-right" onclick="closeDetails(<%=link.id%>)">×</a>
 </div>
+</div>
+

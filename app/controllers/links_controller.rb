@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_filter :correct_user, only: :destroy
+  before_filter :correct_user, only: [:destroy, :edit, :update]
   def new
   	@link = Link.new
   end
@@ -16,7 +16,6 @@ class LinksController < ApplicationController
       redirect_to root_path
     else
       params[:link][:title]=doc.title
-      binding.pry
       params[:link][:desc]=doc.description
       params[:link][:favicon]=doc.favicon
       if(signed_in?)
@@ -31,6 +30,24 @@ class LinksController < ApplicationController
         flash[:error] = "Error ocurred while creating new url"
   		  render 'static_pages/home'
       end
+    end
+  end
+
+  def edit
+    @link=Link.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    @link=Link.find(params[:id])
+    if @link.update_attributes(params[:link])
+      flash[:success] = "Updated link successful"
+      redirect_to root_path
+    else 
+      flash[:error] = "Some error occured, please try again"
+      redirect_to root_path
     end
   end
 

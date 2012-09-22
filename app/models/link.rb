@@ -1,7 +1,6 @@
 class Link < ActiveRecord::Base
-  attr_accessible :rlink, :title, :name, :user_id
+  attr_accessible :rlink, :title, :name, :user_id, :desc, :favicon
   belongs_to :user
-
 
   validates :rlink, presence: true, length: { maximum: 500}
   validates :name, presence: true, length: {maximum: 81, minimum: 4}, uniqueness: {case_sensitive: true}
