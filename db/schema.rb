@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921091744) do
+ActiveRecord::Schema.define(:version => 20120922114359) do
 
   create_table "links", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20120921091744) do
     t.datetime "updated_at", :null => false
     t.string   "name"
     t.integer  "user_id"
+    t.string   "desc"
+    t.string   "favicon"
   end
 
   add_index "links", ["name"], :name => "index_links_on_name", :unique => true

@@ -5,11 +5,11 @@
 	Your real URL<input class="span8"type="text" value="<%=@link.rlink%>"/>
 	<div class="url-info well">
 		<div class="title">
-			<% if !@doc.favicon.nil? %>
-			<%=image_tag @doc.favicon %>
+			<% if !@link.favicon.nil? %>
+			<%=image_tag @link.favicon %>
 			<%end%>
-			<%= @doc.title %>
+			<%= @link.title %>
 		</div>
-		<div class="desc"><%= strip_tags(@doc.description) %> </div>
+		<div class="desc"><%= strip_tags(@link.desc) %> </div>
 	</div>
 </div>

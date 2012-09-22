@@ -3,8 +3,8 @@
 <input type="text" class="span4"value="<%= get_base_url+link.name %>"/>
 <div class="date">Created <%= time_ago_in_words(link.created_at)%> ago</div>
 <div class="btn-group toolbar">
-	<%= link_to 'Details' , '#', class: "btn btn-small" %>
-	<%= link_to 'Details' , '#', class: "btn btn-small" %>
+	<%= link_to 'Details' , link, remote: true, class: "btn btn-small" %>
+	<%= link_to 'Edit' , '#', class: "btn btn-small" %>
 	<%= link_to 'Delete' , link, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-small" %>
 </div>
 </div>

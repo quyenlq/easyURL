@@ -11,7 +11,8 @@ EasyURL::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   controller :links do
-    get '/:name' => :redirect
+    get ':id/preview' =>:preview ,as: :preview
+    get '/:name' => :redirect 
   end
 
   # The priority is based upon order of creation:

@@ -16,6 +16,9 @@ class LinksController < ApplicationController
       redirect_to root_path
     else
       params[:link][:title]=doc.title
+      binding.pry
+      params[:link][:desc]=doc.description
+      params[:link][:favicon]=doc.favicon
       if(signed_in?)
         @link = current_user.links.build(params[:link])
       else      
@@ -23,7 +26,7 @@ class LinksController < ApplicationController
       end
   	  if(@link.save)
         flash[:success] = "Created shorten url, please copy and store your URL below"
-  		  redirect_to @link
+  		  redirect_to preview_path(@link)
   	  else
         flash[:error] = "Error ocurred while creating new url"
   		  render 'static_pages/home'
@@ -34,11 +37,19 @@ class LinksController < ApplicationController
   def show
     @link = Link.find(params[:id]);
     @doc = Pismo::Document.new(@link.rlink)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
     @link.destroy
     redirect_to root_path
+  end
+
+
+  def preview
+    @link = Link.find(params[:id]);
   end
 
   def redirect
@@ -70,5 +81,5 @@ class LinksController < ApplicationController
       @link = current_user.links.find_by_id(params[:id])
       redirect_to root_url if @link.nil?
   end
-
+  
 end
