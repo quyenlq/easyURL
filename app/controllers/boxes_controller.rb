@@ -1,5 +1,5 @@
 class BoxesController < ApplicationController
-	skip_before_filter :correct_user ,only: [:new, :create]
+	before_filter :correct_user ,only: [:show, :destroy, :edit, :update]
 	before_filter :signed_in_user
 
 	def new

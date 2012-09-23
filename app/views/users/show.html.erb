@@ -1,5 +1,5 @@
 <% provide(:title, "Profile") %> 
-<h1>Hi, <%= @user.name %></h1>
+<h1 class="page-header">Hi, <%= @user.name %> !<small> You currently have <%= pluralize(@user.links.count, "link") %> and <%= pluralize(@user.boxes.count, "box") %></small></h1>
 
 <div class="row">
   <div class="span6 offset3">

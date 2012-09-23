@@ -3,8 +3,11 @@ class Link < ActiveRecord::Base
   belongs_to :user
   belongs_to :box
 
+  VALID_NAME_REGEX = /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9_]*$/
+
   validates :rlink, presence: true, length: { maximum: 500}
-  validates :name, presence: true, length: {maximum: 81, minimum: 4}, uniqueness: {case_sensitive: true}
+  validates :name, presence: true, length: {maximum: 81, minimum: 3}, uniqueness: {case_sensitive: true},
+  				   format: {with: VALID_NAME_REGEX}
 
   default_scope order: 'links.created_at DESC'
 

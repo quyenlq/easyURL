@@ -4,10 +4,11 @@
     <h3 id="myModalLabel">Add link to box</h3>
   </div>
   <div class="modal-body">
-    
-  	<%= select_tag "box_id", options_from_collection_for_select(current_user.boxes.all, "id", "name") %>
-    
+    Choose box: 
+  	<%= select_tag "box_id", options_from_collection_for_select(current_user.boxes.all, "id", "name") %><br>
+    or <%= link_to "Create new box", new_box_path,  remote: true %>    
   </div>
+
   <div class="modal-footer">
     <%= submit_tag "Add to box", class: "btn btn-primary" %>
     <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>

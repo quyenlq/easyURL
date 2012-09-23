@@ -7,7 +7,7 @@
 <div class="box-name" >in <%= link_to link.box.name, link.box %></div>
 <% end%>
 <div class="btn-group toolbar pull-right" style="display:inline">
-	<a href="#d-content<%=link.id%>" class="btn btn-small btn-primary" id="details" onclick="displayDetails(<%=link.id%>)">Details</a>
+	<a class="btn btn-small btn-primary" id="details" onclick="displayDetails(<%=link.id%>)">Details</a>
 	<%= link_to 'Edit' , edit_link_path(link), remote: true, class: "btn btn-small btn-primary" %>
 	<%= link_to 'Add to box' , addtobox_path(link), remote: true, class: "btn btn-small btn-primary" %>
 	<%= link_to 'Delete' , link, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-small btn-primary" %>

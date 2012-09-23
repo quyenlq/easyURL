@@ -8,8 +8,12 @@ class LinksController < ApplicationController
   def create
     #generate random string
     if(params[:link][:name].nil?||params[:link][:name]=="")
-      params[:link][:name]=get_url(4)
+      params[:link][:name]=get_url(5) 
     end
+    if check_forbidden_name(params[:link][:name])
+      flash[:error] =" Your URL has already been used"
+      redirect_to root_path
+    else
     #get url information
     doc = Pismo::Document.new(params[:link][:rlink])
     if doc.title.nil?
@@ -28,10 +32,11 @@ class LinksController < ApplicationController
         flash[:success] = "Created shorten url, please copy and store your URL below"
   		  redirect_to preview_path(@link)
   	  else
-        flash[:error] = "Error ocurred while creating new url"
-  		  render 'static_pages/home'
+        flash[:error] = " Error occured! Please check your URL "
+  		  redirect_to root_path
       end
     end
+  end
   end
 
   def edit
@@ -118,4 +123,13 @@ class LinksController < ApplicationController
       redirect_to root_url if @link.nil?
   end
   
+  def check_forbidden_name(name)
+    fnames=["home","bookmark","signup","signin","signout","create","addbox"]
+    fnames.each do |fname|
+      if fname.equal?(name)
+        return true
+      end
+    end
+    return false
+  end
 end

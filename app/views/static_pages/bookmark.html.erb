@@ -1,6 +1,6 @@
 <% provide(:title,"Bookmark Tool") %>
 <div class="bookmark">
-	<h1>Drag this icon below your bookmark toolbar</h1>
+	<h1>Drag this icon below to Bookmarks bar</h1>
 <a href="javascript:void(location.href='http://localhost:3000/create?link%5Brlink%5D='+encodeURIComponent(location.href))" onmouseover="window.status='';return true" onclick="return false"><%= image_tag 'icon.png', :alt => "EasyURL", class: "icon" %></a>
-	<h3>Then push it when you think your URL is too long</h3>
+	<h5>Then push it when you think your URL is too long</h5>
 </div>

@@ -4,9 +4,7 @@
       <a class="brand" href="<%=root_path %>" id="logo">EasyURL</a>
       <nav>
         <ul class="nav pull-right">
-          <li class="divider-vertical"></li>
-          <li><%= link_to "Bookmark Tool", bookmark_path %></li>
-          <li class="divider-vertical"></li>
+          <li class="divider-vertical"></li>          
           <% if signed_in? %>
           <li><%= link_to "My Profile", current_user %></li>        
           <li class="divider-vertical"></li>
@@ -16,6 +14,8 @@
           <li class="divider-vertical"></li>
           <li><%= link_to "Sign up", signup_path %></a></li>
           <% end %>
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Bookmark Tool", bookmark_path %></li>
           <li class="divider-vertical"></li>
         </ul>
         <nav>
