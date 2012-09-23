@@ -93,13 +93,17 @@ class LinksController < ApplicationController
 
   def redirect
     tails=params[:tails]
-    name = tails.split('/').first
-    tails=tails.sub(name,'')
+    name = tails.split('/').first    
     link= Link.find_by_name(name)
     if link.nil?
       @link=Link.new
       render 'static_pages/notfound'
     else
+      if link.rlink.last.==('/')
+        tails=tails.sub(name+'/','')
+      else
+        tails=tails.sub(name,'')
+      end
       if params[:format].nil?
         redirect_to link.rlink+tails
       else
