@@ -2,17 +2,22 @@ EasyURL::Application.routes.draw do
   resources :links
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :boxes
 
   root to: "static_pages#home"
   match '/home', to:'static_pages#home'
+  match '/bookmark', to:'static_pages#bookmark'
 
   match '/signup', to:'users#new'
   match '/signin', to:'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/create', to: 'links#create'
 
   controller :links do
     get ':id/preview' =>:preview ,as: :preview
-    get '/:name' => :redirect 
+    get '/:name' => :redirect     
+    get 'addbox/:id' => :choose_box, as: :addtobox
+    post 'addbox/:id' => :add_to_box, as: :addtobox
   end
 
   # The priority is based upon order of creation:

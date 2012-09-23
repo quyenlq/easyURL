@@ -1,0 +1,13 @@
+<% provide(:title, 'Create box') %>
+<h1 class="big-title">Create box</h1>
+<div class="row signup">
+  <div class="span6 offset3">
+    <%= form_for(@box) do |f| %>
+      <%= render 'shared/error_messages', object: @box %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.submit "Create box", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

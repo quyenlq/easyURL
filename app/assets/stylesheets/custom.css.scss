@@ -55,6 +55,11 @@
   }
  }
 
+.add-btn{
+  width: 95%;
+  margin: 10px 0 10px 0;
+}
+
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -65,6 +70,21 @@ input, textarea, select, .uneditable-input {
 }
 
 .item-link{
+  margin-bottom: 30px;
+  .title{
+      margin: 10px 0 20px 0px;
+      font-weight: bold;
+      img{
+        margin: 0 5px;
+      }    
+    }
+
+  .box-name{
+    margin-left: 5px;
+    font-style: italic;
+    font-size: 90%;
+  }
+
   input{
     margin: 5px;
   }
@@ -75,20 +95,15 @@ input, textarea, select, .uneditable-input {
     font-style: italic;
   }
   .toolbar{
-    margin-bottom: 10px;
+    margin: 10px 0 10px 0;
     padding-left: 5px;
   }
 
   .details{
-    .title{
-      margin: 10px 0 20px 0px;
-      font-weight: bold;
-      img{
-        margin: 0 5px;
-      }    
-    }
-  .desc{
-      margin-left: 5px;
+    margin-top: 50px;
+    .desc{
+      font-size: 90%;
+      margin: 10px 0 0 5px;
       text-align: justify;
       font-style: italic;
     }
@@ -101,7 +116,13 @@ input, textarea, select, .uneditable-input {
 /* HEADER */
 body{
 	margin-top: 80px;
+  background-color: #ECF3FD !important;
 }
+
+.bookmark{
+  text-align: center;
+
+  }
 
 #logo {
   float: left;

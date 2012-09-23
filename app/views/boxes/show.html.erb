@@ -1,0 +1,21 @@
+<% provide(:title, "Box: "+@box.name) %>
+<div class="row">
+	<div class="span4">
+		<div class="page-header"><h1><%=@box.name%><h1><small><%= pluralize(@box.links.count, "link") %></small></div>
+		<%= link_to 'Rename' , edit_box_path(@box), remote: true, class: "btn btn-large btn-primary" %>
+		<%= link_to 'Delete' , @box, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-large btn-primary" %>
+	</div>
+	<div class="span8">
+		<% if @box.links.empty? %>
+			<div class="alert alert-info">This box is currently empty</div>
+		<%else%>
+		<table class="table table-hover table-striped" style="border-left: 1px solid #ccc">
+			<% @links.each do |link| %>
+				<%= render 'link', link: link %>
+			<% end %>
+		</table>
+		<%= will_paginate @links%>
+		<% end %>
+	</div>
+		
+</div>

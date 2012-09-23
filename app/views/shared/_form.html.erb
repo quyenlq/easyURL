@@ -1,0 +1,7 @@
+<%= form_for(@link) do |f| %>
+	<%= render 'shared/error_messages', object: @link %>
+	<input id="link_rlink" name="link[rlink]" class="span6" placeholder="Enter your looooooong url" type="text">
+	<input id="link_name" name="link[name]" value="<%=@url%>" class="span6" type="text" style="display:none">
+	<br>
+	<%= f.submit "Shorten it !!!", class: "btn btn-primary btn-large" %>
+<%end%>

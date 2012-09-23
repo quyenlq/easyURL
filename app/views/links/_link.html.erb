@@ -3,12 +3,17 @@
 <input type="text" class="span4"value="<%= get_base_url+link.name %>"/>
 <span class="label label-success">Easy URL</span>
 <div class="date">Created <%= time_ago_in_words(link.created_at)%> ago</div>
-<div class="btn-group toolbar">
-	<a href="#d-content<%=link.id%>" class="btn btn-small" id="details" onclick="displayDetails(<%=link.id%>)">Details</a>
-	<%= link_to 'Edit' , edit_link_path(link), remote: true, class: "btn btn-small" %>
-	<%= link_to 'Delete' , link, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-small" %>
+<% unless link.box.nil? %>
+<div class="box-name" >in <%= link_to link.box.name, link.box %></div>
+<% end%>
+<div class="btn-group toolbar pull-right" style="display:inline">
+	<a href="#d-content<%=link.id%>" class="btn btn-small btn-primary" id="details" onclick="displayDetails(<%=link.id%>)">Details</a>
+	<%= link_to 'Edit' , edit_link_path(link), remote: true, class: "btn btn-small btn-primary" %>
+	<%= link_to 'Add to box' , addtobox_path(link), remote: true, class: "btn btn-small btn-primary" %>
+	<%= link_to 'Delete' , link, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-small btn-primary" %>
 </div>
 <div id="d-content<%=link.id %>" class="details" style="display: none">
+	<hr>
 	<div class="desc"> <%= strip_tags(link.desc)%> </div>	
 	<input type="text" class="span4" value="<%= link.rlink %>"/> <span class="label label-important">Real URL</span>
 	<a class="close pull-right" onclick="closeDetails(<%=link.id%>)">×</a>

@@ -1,29 +1,42 @@
+<%= image_tag "http://placehold.it/940x150" %>
+<hr>
 <%= form_for @link,:html => { :class => "form form-inline" } do |f| %>
 	<%= render 'shared/error_messages', object: @link %>
-	<input id="link_rlink" name="link[rlink]" class="span6" placeholder="Enter your url" type="text">
+	<input id="link_rlink" name="link[rlink]" class="span6" placeholder="Enter your url" type="text"> in box
+	<%= select("link", "box_id", Box.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}, {:class => "span4"})%>
 	<%= f.submit "Shorten it!!!", class: "btn btn-primary" %>
+	<small><br><a id="custom">customize your URL?</a></small>
+	<div id="custom-field" style="display:none">
+		<%= get_base_url %>
+	<input id="link_name" name="link[name]" class="span4"></div>
 <% end %>
 <div class="navbar">
 			<div class="navbar-inner">
-				<ul class="nav nav-tabs" id="myTab">
+				<ul class="nav nav-pills" id="myTab">
 					<li class="active"><a href="#links" data-toggle="tab"><i class="icon-star-empty"></i> Links </a></li>
 					<li><a href="#boxes" data-toggle="tab"><i class="icon-inbox"></i> Boxes</a></li>
 				</ul>
 			</div>
 		</div>
-<div class="row">
+<div class="row">	
 	<div class="span8">
 		<div class="tab-content">
 		<div class="tab-pane active" id="links">		
 			<%= render 'links' %>
 		</div>
-		<div class="tab-pane active" id="boxes">		
+		<div class="tab-pane " id="boxes">					
 			<%= render 'boxes' %>
 		</div>
 		</div>
 	</div>
 
-	<div class="span4"></div>
+	<div class="span4">
+		<%= image_tag "http://placehold.it/300x450" %>
+		<hr>
+		<%= image_tag "http://placehold.it/300x200" %>
+		<hr>
+		<%= image_tag "http://placehold.it/300x700" %>
+	</div>
 </div>
 
 

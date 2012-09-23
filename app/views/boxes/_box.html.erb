@@ -1,0 +1,10 @@
+<div class="well item-link">
+<%= link_to box.name, box, class: "title"%>  <span class="label label-important pull-right"><%= box.links.count %> links</span>
+<div class="btn-group toolbar">
+	<%= link_to 'Rename' , edit_box_path(box), remote: true, class: "btn btn-small" %>
+	<%= link_to 'Delete' , box, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-small" %>
+</div><div class="date pull-right">Created <%= time_ago_in_words(box.created_at)%> ago</div>
+<div id="b-content<%=box.id %>" class="details" style="display: none">
+</div>
+</div>
+

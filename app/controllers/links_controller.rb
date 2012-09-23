@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   before_filter :correct_user, only: [:destroy, :edit, :update]
+
   def new
   	@link = Link.new
   end
@@ -14,7 +15,7 @@ class LinksController < ApplicationController
     if doc.title.nil?
       flash[:error] = "Sorry! Your URL does not seem right"
       redirect_to root_path
-    else
+    else      
       params[:link][:title]=doc.title
       params[:link][:desc]=doc.description
       params[:link][:favicon]=doc.favicon
@@ -61,6 +62,7 @@ class LinksController < ApplicationController
 
   def destroy
     @link.destroy
+    flash[:success] = "Link deleted"
     redirect_to root_path
   end
 
@@ -69,10 +71,27 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id]);
   end
 
+  def choose_box
+    @boxes = current_user.boxes.all
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def add_to_box
+    @link = Link.find(params[:id]);
+    if @link.update_attribute("box_id", params[:box_id])
+      flash[:success] = "Add to box"
+      redirect_to root_path
+    end
+  end
+
   def redirect
+    @url=params[:name]
     link= Link.find_by_name(params[:name])
     if link.nil?
-      redirect_to 'static_pages/notfound'
+      @link=Link.new
+      render 'static_pages/notfound'
     else
     redirect_to link.rlink
     end 

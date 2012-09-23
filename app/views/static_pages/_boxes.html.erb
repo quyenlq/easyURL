@@ -1,0 +1,6 @@
+<h1 class="page-header">Your boxes <small>(<%= @boxes.count %>)</small></h1>
+<%= link_to "Create new box", new_box_path, remote:true, class: "btn btn-inverse add-btn" %>
+<% @boxes.each do |box| %> 
+<%= render box %>
+<% end %>
+<%= will_paginate @boxes%>

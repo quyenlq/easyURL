@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922114359) do
+ActiveRecord::Schema.define(:version => 20120923042528) do
+
+  create_table "boxes", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "boxes", ["user_id", "created_at"], :name => "index_boxes_on_user_id_and_created_at"
 
   create_table "links", :force => true do |t|
     t.string   "title"
@@ -22,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120922114359) do
     t.integer  "user_id"
     t.string   "desc"
     t.string   "favicon"
+    t.integer  "box_id"
   end
 
   add_index "links", ["name"], :name => "index_links_on_name", :unique => true

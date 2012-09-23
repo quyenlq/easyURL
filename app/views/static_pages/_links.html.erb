@@ -1,5 +1,4 @@
-<h1 class="big-title">Your links (<%= @links.count %>)</h1>
-<hr>
+<h1 class="page-header">Your links <small>(<%= @links.count %>)</small></h1>
 <% @links.each do |link| %> 
 <%= render link %>
 <% end %>

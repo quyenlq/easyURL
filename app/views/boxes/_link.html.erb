@@ -1,0 +1,9 @@
+<tr class="item-link">
+	<td>
+	<a class="title" href="<%= link.rlink %>"> <%=get_favicon(link)%> <%= truncate(link.title, length: 70) %></a><br>
+	<input type="text" value="<%= get_base_url+link.name%>" class="span4"/> <span class="label label-success">Easy URL</span>
+	<%=link_to '×', link, method: :delete, data: {confirm: "Are you sure"}, class: "close" %>
+	<br>
+	<%=link_to 'See preview', preview_path(link), class: "box-name" %>
+	<td>
+</tr>
