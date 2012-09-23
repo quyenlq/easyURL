@@ -4,6 +4,12 @@ EasyURL::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :boxes
 
+  controller :links do
+    get '/preview/:id' =>:preview ,as: :preview
+    get 'addbox/:id' => :choose_box, as: :addtobox
+    post 'addbox/:id' => :add_to_box, as: :addtobox
+  end
+
   root to: "static_pages#home"
   match '/home', to:'static_pages#home'
   match '/bookmark', to:'static_pages#bookmark'
@@ -12,13 +18,8 @@ EasyURL::Application.routes.draw do
   match '/signin', to:'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/create', to: 'links#create'
-
-  controller :links do
-    get ':id/preview' =>:preview ,as: :preview
-    get '/:name' => :redirect     
-    get 'addbox/:id' => :choose_box, as: :addtobox
-    post 'addbox/:id' => :add_to_box, as: :addtobox
-  end
+  match '/*tails', to: 'links#redirect', :requirements => { :tails => /.*/ }
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

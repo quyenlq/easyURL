@@ -41,7 +41,7 @@ class LinksController < ApplicationController
 
   def edit
     @link=Link.find(params[:id])
-    respond_to do |format|
+  respond_to do |format|
       format.js
     end
   end
@@ -92,13 +92,19 @@ class LinksController < ApplicationController
   end
 
   def redirect
-    @url=params[:name]
-    link= Link.find_by_name(params[:name])
+    tails=params[:tails]
+    name = tails.split('/').first
+    tails=tails.sub(name,'')
+    link= Link.find_by_name(name)
     if link.nil?
       @link=Link.new
       render 'static_pages/notfound'
     else
-    redirect_to link.rlink
+      if params[:format].nil?
+        redirect_to link.rlink+tails
+      else
+        redirect_to link.rlink+tails+'.'+params[:format]
+      end
     end 
   end
 
