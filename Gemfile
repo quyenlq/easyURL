@@ -7,12 +7,12 @@ gem 'bootstrap-will_paginate', '0.0.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'bootstrap-sass', '2.1.0'
 gem 'faker', '1.0.1'
 gem 'pismo'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'annotate', '~> 2.4.1.beta' # use it for annotating database
 end
 
