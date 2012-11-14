@@ -66,6 +66,7 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     nokogiri (1.5.5)
+    pg (0.12.2)
     pismo (0.7.2)
       awesome_print
       chronic
@@ -144,6 +145,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   faker (= 1.0.1)
   jquery-rails
+  pg (= 0.12.2)
   pismo
   pry (= 0.9.9.4)
   rails (= 3.2.6)

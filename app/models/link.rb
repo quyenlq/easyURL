@@ -9,7 +9,7 @@ class Link < ActiveRecord::Base
   validates :name, presence: true, length: {maximum: 81, minimum: 3}, uniqueness: {case_sensitive: true},
   				   format: {with: VALID_NAME_REGEX}
 
-  default_scope order: 'links.created_at DESC'
+  default_scope order: 'events.created_at DESC'
 
 end
 # == Schema Information
