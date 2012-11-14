@@ -1,4 +1,5 @@
 easyURL
 =======
 
-sample shorten url website
+make sample data:
+$rake db:populate
